@@ -128,7 +128,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   padding: 21px 0 11px;
-  margin-bottom: 8px;
+  margin-bottom: 7.5px;
   .header-user,
   .header-settings {
     .user-link,
