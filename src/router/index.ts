@@ -1,20 +1,42 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Index from '../views/Index.vue'
+import Refferal from '../views/Refferal.vue'
+import Earn from '../views/Earn.vue'
+import Boost from '../views/Boost.vue'
+import qrcode from '../views/qr-code.vue'
+import slider from '../views/Slider.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'index',
+    component: Index
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/refferal',
+    name: 'refferal',
+    component: Refferal
+  },
+  {
+    path: '/earn',
+    name: 'earn',
+    component: Earn
+  },
+  {
+    path: '/boost',
+    name: 'boost',
+    component: Boost
+  },
+  {
+    path: '/qr-code',
+    name: 'qr-code',
+    component: qrcode
+  },
+  {
+    path: '/slider',
+    name: 'slider',
+    component: slider
+  },
 ]
 
 const router = createRouter({

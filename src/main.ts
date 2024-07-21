@@ -3,4 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Importing the global css file
+import "@/assets/css/main.css"
+
 createApp(App).use(store).use(router).mount('#app')
