@@ -8,7 +8,7 @@
 
 <script>
 import Menu from "@/components/Menu.vue";
-import PageLoading from "@/components/Page-Loading.vue";
+import PageLoading from "@/components/Page-Loading";
 export default {
   components: {
     Menu,
