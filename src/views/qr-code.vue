@@ -17,6 +17,7 @@
   padding-top: 107px;
   overflow: hidden;
   position: relative;
+  z-index: 1000;
   &::before {
     content: "";
     width: 396px;
