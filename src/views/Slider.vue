@@ -223,7 +223,7 @@ export default {
       border-radius: 37px;
       padding: 8.5px 20px;
       top: auto;
-      bottom: 236px;
+      bottom: 245px;
       left: 50%;
       transform: translateX(-50%);
       .swiper-pagination-bullet {
@@ -247,12 +247,12 @@ export default {
         min-height: 850px;
         .slider_body {
           .title {
-            font-size: 22px;
+            font-size: 20px;
             line-height: 25px;
             margin-bottom: 5px;
           }
           .description {
-            font-size: 16px;
+            font-size: 14px;
             line-height: 20px;
           }
           .body_btn {
