@@ -76,8 +76,8 @@
         </button>
         <div class="title">Settings</div>
         <div class="langs">
-          <div
-            class="lang_btn active d-flex align-items-center"
+          <button
+            class="lang_btn border-0 active d-flex align-items-center"
             @click="langSelect('Русский')"
           >
             <div
@@ -86,9 +86,9 @@
               <div class="btn_type_in"></div>
             </div>
             <span class="lang">Русский</span>
-          </div>
-          <div
-            class="lang_btn d-flex align-items-center"
+          </button>
+          <button
+            class="lang_btn border-0 d-flex align-items-center"
             @click="langSelect('English')"
           >
             <div
@@ -97,7 +97,7 @@
               <div class="btn_type_in"></div>
             </div>
             <span class="lang">English</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -116,6 +116,10 @@ export default {
       document.querySelectorAll(".lang_btn").forEach((e) => {
         if (e.children[1].innerText == lang) {
           e.classList.add("active");
+          e.classList.add("animation");
+          setTimeout(function () {
+            e.classList.remove("animation");
+          }, 300);
         } else {
           e.classList.remove("active");
         }
@@ -210,6 +214,7 @@ export default {
           font-size: 15px;
           color: rgba(255, 255, 255, 0.6);
           margin-bottom: 8px;
+          transition: 0.3s;
           &:last-child {
             margin-bottom: 0;
           }
@@ -218,6 +223,13 @@ export default {
             border-radius: 3px;
             width: 16px;
             height: 16px;
+            transition: 0.3s;
+            .btn_type_in {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              transition: 0.3s;
+            }
           }
         }
         .active {
@@ -227,9 +239,16 @@ export default {
           .btn_type {
             background: #41fdb9;
             .btn_type_in {
-              width: 8px;
-              height: 8px;
-              border-radius: 50%;
+              background: #fff;
+            }
+          }
+        }
+        .animation {
+          background: url("@/assets/img/lang_anime.svg");
+          background-size: cover;
+          .btn_type {
+            background: #52ff56;
+            .btn_type_in {
               background: #fff;
             }
           }

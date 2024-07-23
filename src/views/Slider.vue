@@ -2,7 +2,7 @@
   <div class="slider">
     <div class="main_container px-0">
       <swiper
-        :pagination="true"
+        :pagination="{ clickable: true }"
         :modules="modules"
         autoHeight="{true}"
         class="slider_in"
@@ -95,13 +95,14 @@ export default {
 <style lang="scss">
 .slider {
   background: #0f1521;
+  min-height: 1050px;
   .main_container {
     max-width: 591px;
   }
   .slider_in {
     .swiper-slide {
-      min-height: 100vh;
-      height: 100%;
+      min-height: 1050px;
+
       &:nth-child(1) {
         background: url("@/assets/img/slider1.png");
         background-position: top center;
@@ -116,6 +117,19 @@ export default {
           margin: 53px auto 334px;
           img {
             width: 100%;
+            animation: rotate 3s infinite;
+            transform-origin: bottom left;
+          }
+          @keyframes rotate {
+            0% {
+              transform: rotate(0deg);
+            }
+            50% {
+              transform: rotate(15deg);
+            }
+            100% {
+              transform: rotate(0deg);
+            }
           }
         }
       }
@@ -123,6 +137,10 @@ export default {
         background: url("@/assets/img/slider3.png");
         background-position: top center;
         background-size: 100%;
+        .slider_body {
+          min-height: 665px;
+          height: 665px;
+        }
       }
       .slider_img {
         max-width: 466px;
@@ -141,7 +159,7 @@ export default {
         z-index: 2;
         background: url("@/assets/img/bg_blur.png");
         background-size: cover;
-        padding: 0 22px 123px;
+        padding: 0 22px 150px;
         .title {
           font-family: var(--font-family);
           font-weight: 600;
@@ -150,7 +168,7 @@ export default {
           color: #fff;
         }
         .description {
-          max-width: 450px;
+          max-width: 545px;
           margin: 0 auto;
           font-family: var(--font-family);
           font-weight: 400;
@@ -160,7 +178,8 @@ export default {
           margin-bottom: 80px;
         }
         .body_btn {
-          width: 278px;
+          max-width: 278px;
+          width: 100%;
           height: 67px;
           margin: 0 auto;
           border-radius: 20px;
@@ -170,6 +189,29 @@ export default {
           font-size: 20px;
           text-align: center;
           color: #161e31;
+          position: relative;
+          overflow: hidden;
+          &::before {
+            content: "";
+            width: 28px;
+            height: 233px;
+            background: #fff;
+            filter: blur(10px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            z-index: 2;
+            animation: buttonblur 2s ease-in infinite;
+          }
+          @keyframes buttonblur {
+            from {
+              left: -30px;
+            }
+            to {
+              left: 110%;
+            }
+          }
         }
       }
     }
@@ -181,7 +223,7 @@ export default {
       border-radius: 37px;
       padding: 8.5px 20px;
       top: auto;
-      bottom: 214px;
+      bottom: 236px;
       left: 50%;
       transform: translateX(-50%);
       .swiper-pagination-bullet {
@@ -199,8 +241,10 @@ export default {
 }
 @media (max-width: 450px) {
   .slider {
+    min-height: 850px;
     .slider_in {
       .swiper-slide {
+        min-height: 850px;
         .slider_body {
           .title {
             font-size: 22px;

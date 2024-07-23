@@ -128,6 +128,7 @@ export default {
 .daily_rewerds_modal {
   width: 100%;
   height: 100vh;
+  padding: 0 10px;
   backdrop-filter: blur(3.799999952316284px);
   background: linear-gradient(180deg, rgba(22, 30, 49, 0) 0%, #191f30 100%);
   position: fixed;
@@ -273,7 +274,7 @@ export default {
         }
       }
       .get_btn {
-        width: 319px;
+        width: calc(100% - 22px);
         height: 57px;
         color: #151d30;
         text-align: center;
@@ -302,7 +303,7 @@ export default {
   }
 }
 .daily_rewerds_modal.active {
-  z-index: 1;
+  z-index: 1000;
   opacity: 1;
   .modal_in {
     transform: scale(1);

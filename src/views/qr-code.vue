@@ -8,14 +8,6 @@
     </div>
   </div>
 </template>
-<script>
-import PageLoading from "@/components/page-loading.vue";
-export default {
-  components: {
-    PageLoading,
-  },
-};
-</script>
 <style lang="scss" scoped>
 .qr_code {
   background: url("@/assets/img/qr_code_bg.png");

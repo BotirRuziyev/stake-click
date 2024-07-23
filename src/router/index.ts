@@ -5,6 +5,8 @@ import Earn from '../views/Earn.vue'
 import Boost from '../views/Boost.vue'
 import qrcode from '../views/qr-code.vue'
 import slider from '../views/Slider.vue'
+import Wallet from '../views/Wallet.vue'
+import Reload from '../views/Reload.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,6 +38,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/slider',
     name: 'slider',
     component: slider
+  },
+  {
+    path: '/wallet',
+    name: 'wallet',
+    component: Wallet
+  },
+  {
+    path: '/reload',
+    name: 'reload',
+    component: Reload
   },
 ]
 

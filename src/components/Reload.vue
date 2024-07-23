@@ -47,6 +47,7 @@ export default {
   background-position: top -2px;
   overflow: hidden;
   position: relative;
+  z-index: 1000;
   &::before {
     content: "";
     width: 396px;

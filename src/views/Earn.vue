@@ -15,7 +15,7 @@
           <div class="title">Daily tasks</div>
           <button
             class="daily_task_btn w-100 d-flex align-items-center justify-content-between"
-            @click="(loading = true), (modal = true)"
+            @click="modal = true"
             :class="loading ? 'loading' : ''"
           >
             <div class="daily_task_btn_in d-flex align-items-center">
@@ -51,10 +51,10 @@
           <div class="task_list">
             <div class="task_list_title">Task list</div>
             <div
-              class="list_item"
-              v-for="item of 3"
-              :key="item"
-              @click="taskAnimation(item)"
+              class="list_item position-relative"
+              v-for="(item, i) in 3"
+              :key="i"
+              @click="taskBtn(i, $event)"
             >
               <div
                 class="list_item_in d-flex align-items-center position-ralative"
@@ -94,6 +94,20 @@
                   </svg>
                 </div>
               </div>
+              <div class="list_item_btn d-grid position-absolute">
+                <button
+                  class="go_again_btn d-flex align-items-center justify-content-center border-0"
+                >
+                  Go again
+                </button>
+                <button
+                  class="check_btn d-flex align-items-center justify-content-center border-0"
+                  @click="check(i)"
+                >
+                  <span>Check</span>
+                  <Loading />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -116,27 +130,52 @@ export default {
   },
   data() {
     return {
-      loading: false,
       modal: false,
     };
   },
   methods: {
-    taskAnimation(id) {
+    modalupdate(modal) {
+      this.modal = modal;
+    },
+    taskBtn(index, e) {
+      let check = !e.target.closest(".check_btn");
+      document.querySelectorAll(".task_list .list_item_btn").forEach((e, i) => {
+        if (i == index && check) {
+          e.classList.add("active");
+        }
+      });
+    },
+    check(index) {
       document.querySelectorAll(".task_list .list_item").forEach((e, i) => {
-        if (i + 1 == id) {
+        if (i == index) {
+          e.classList.add("active");
+        }
+      });
+      document.querySelectorAll(".task_list .list_item_btn").forEach((e, i) => {
+        if (i == index) {
+          e.classList.remove("active");
+        }
+      });
+      // star animation
+      document.querySelectorAll(".task_list .list_item").forEach((e, i) => {
+        if (i == index) {
           e.classList.add("animation");
         }
       });
       setTimeout(() => {
         document.querySelectorAll(".task_list .list_item").forEach((e, i) => {
-          if (i + 1 == id) {
+          if (i == index) {
             e.classList.remove("animation");
           }
         });
       }, 3000);
-    },
-    modalupdate(modal) {
-      this.modal = modal;
+
+      // loading start
+      // document.querySelectorAll(".task_list .check_btn").forEach((e, i) => {
+      //   if (i == index) {
+      //     e.classList.add("loading");
+      //   }
+      // });
     },
   },
 };
@@ -150,7 +189,7 @@ export default {
     width: 100%;
     max-width: 450px;
     margin: 0 auto;
-    padding: 20px 0 100px;
+    padding: 20px 0 150px;
     background-image: url("@/assets/img/earn_bg.png");
     background-position: top center;
     background-size: cover;
@@ -269,6 +308,7 @@ export default {
           padding: 11px 18px;
           margin-bottom: 15px;
           overflow: hidden;
+          transition: 0.2s;
           &::after {
             content: "";
             width: 100%;
@@ -326,8 +366,97 @@ export default {
               z-index: 10;
             }
           }
+          .list_item_btn {
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            background: rgba(43, 104, 149, 1);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            align-items: center;
+            padding: 0 15px;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            opacity: 0;
+            z-index: -1;
+            transition: 0.2s;
+            button {
+              width: 100%;
+              height: 43px;
+              border-radius: 14px;
+            }
+            .go_again_btn {
+              background: #172c3b;
+              font-family: var(--second-family);
+              font-weight: 600;
+              font-size: 11px;
+              text-align: center;
+              color: #dbdbdb;
+            }
+            .check_btn {
+              background: #41fdb9;
+              font-family: var(--second-family);
+              font-weight: 600;
+              font-size: 11px;
+              text-align: center;
+              color: #264b65;
+              transition: 0.2s;
+              span {
+                transition: 0.2s;
+              }
+            }
+            .check_btn.loading {
+              background: #33bc8b;
+              span {
+                display: none;
+              }
+              .loader-small {
+                display: block;
+              }
+            }
+          }
+          .list_item_btn.active {
+            visibility: visible;
+            z-index: 10;
+            opacity: 1;
+          }
+        }
+        .list_item.active {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+          background: rgba(18, 53, 79, 0.6);
+          &::before {
+            display: none;
+          }
+          .list_item_in {
+            .galchca {
+              opacity: 1;
+              visibility: visible;
+              transform: translateY(-50%) scale(0.6);
+              animation: scale 5s forwards;
+            }
+            @keyframes scale {
+              0% {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-50%) scale(0);
+              }
+              50% {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(-50%) scale(1);
+              }
+              100% {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(-50%) scale(0.6);
+              }
+            }
+          }
         }
         .list_item.animation {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+          background: rgba(27, 82, 122, 0.6);
           &::after {
             animation: verticalAnimation 3s forwards;
           }
@@ -361,26 +490,6 @@ export default {
                 100% {
                   transform: rotate(0);
                 }
-              }
-            }
-            .galchca {
-              animation: scale 5s;
-            }
-            @keyframes scale {
-              0% {
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-50%) scale(0);
-              }
-              50% {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(-50%) scale(1);
-              }
-              100% {
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-50%) scale(0);
               }
             }
           }

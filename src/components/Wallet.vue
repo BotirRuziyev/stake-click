@@ -1,6 +1,8 @@
 <template>
   <div class="wallet d-flex align-items-center">
-    <div class="wallet_in w-100 d-flex flex-column align-items-center">
+    <div
+      class="wallet_in w-100 d-flex flex-column align-items-center justify-content-center"
+    >
       <div class="setting">
         <svg
           width="49"
@@ -38,14 +40,22 @@
 .wallet {
   width: 100%;
   min-height: 100vh;
-  backdrop-filter: blur(3.799999952316284px);
-  background: linear-gradient(180deg, rgba(22, 30, 49, 0) 0%, #191f30 100%);
+  background: url("@/assets/img/задник.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   position: fixed;
   top: 0;
   left: 0;
   opacity: 1;
   visibility: visible;
-  z-index: 10;
+  z-index: 110;
+  .wallet_in {
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(3.799999952316284px);
+    background: linear-gradient(180deg, rgba(22, 30, 49, 0) 0%, #191f30 100%);
+  }
   .description {
     max-width: 300px;
     margin-top: 20px;

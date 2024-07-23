@@ -1,5 +1,7 @@
 <template>
-  <div class="page_loading d-flex align-items-center justify-content-center">
+  <div
+    class="page_loading d-flex align-items-center justify-content-center position-fixed"
+  >
     <div
       class="page_loading_animation position-relative d-flex align-items-center justify-content-center"
     >
@@ -22,8 +24,13 @@ export default {
 
 <style lang="scss">
 .page_loading {
+  width: 100%;
   min-height: 100vh;
   background: #151d30;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: 0.2s;
   .page_loading_animation {
     width: 202px;
     height: 202px;
@@ -58,5 +65,9 @@ export default {
       }
     }
   }
+}
+.page_loading.no_loading {
+  z-index: -1;
+  visibility: hidden;
 }
 </style>

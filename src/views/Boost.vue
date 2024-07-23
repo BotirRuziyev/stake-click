@@ -1,9 +1,9 @@
 <template>
   <div class="boost">
     <div class="boost_in">
-      <div class="main_container position-ralative">
+      <div class="main_container position-relative">
         <div class="back position-absolute">
-          <router-link to="#">
+          <router-link to="#" @click="$router.go(-1)">
             <svg
               width="34"
               height="34"
@@ -48,11 +48,7 @@
                   <div
                     class="card_img d-flex align-items-center justify-content-center"
                   >
-                    <img
-                      height=""
-                      src="/img/rocket.01a520e6.svg"
-                      alt="rocket"
-                    />
+                    <img height="" src="@/assets/img/rocket.svg" alt="rocket" />
                   </div>
                 </swiper-slide>
               </swiper>
@@ -213,26 +209,35 @@ export default {
     width: 100%;
     max-width: 450px;
     margin: 0 auto;
-    padding: 20px 0 50px;
+    padding: 20px 0 150px;
     background-image: url("@/assets/img/boost_bg.png");
     background-position: bottom center;
-    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     .back {
-      top: 16px;
+      top: 0;
       left: 22px;
     }
     .logo {
       margin-bottom: 17px;
     }
     .balance {
-      background: linear-gradient(90deg, #52ff53 0%, #41fdb9 68.5%);
-      border-radius: 13px;
       width: 314px;
       height: 42px;
+      margin: 0 auto;
+      border-radius: 13px;
       padding: 0 24px 0 12px;
       margin-bottom: 6px;
+      background: linear-gradient(to right, #52ff53 0%, #41fdb9 68.5%);
+      background-image: linear-gradient(
+        to right,
+        #52ff53,
+        #41fdb9,
+        #52ff53,
+        #41fdb9
+      );
+      background-size: 200%;
+      animation: balanceBack 5s infinite;
       .head {
         font-family: var(--font-family);
         font-weight: 700;
@@ -246,6 +251,7 @@ export default {
         color: #000;
       }
     }
+
     .daily_boosters {
       margin-bottom: 33px;
       .title {
@@ -261,6 +267,8 @@ export default {
         gap: 23px;
         .card_item {
           max-width: 145px;
+          width: 100%;
+          min-width: 100%;
           .daily_boosters_swiper {
             border-radius: 8px;
             .swiper-slide {
@@ -443,6 +451,17 @@ export default {
             display: block;
           }
         }
+      }
+    }
+    @keyframes balanceBack {
+      0% {
+        background-position-x: left;
+      }
+      50% {
+        background-position-x: center;
+      }
+      100% {
+        background-position-x: left;
       }
     }
   }
