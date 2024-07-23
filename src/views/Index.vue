@@ -458,7 +458,7 @@ export default {
     width: 100%;
     background-image: url("@/assets/img/home_bg.png"),
       linear-gradient(180deg, #151d30 0%, #151d30 44.59%, #151d30 100%);
-    background-position: center;
+    background-position: center -50px;
     background-size: 800px;
     background-repeat: no-repeat;
   }
