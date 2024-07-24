@@ -45,7 +45,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Wallet
   },
   {
-    path: '/wallet',
+    path: '/reload',
     name: 'reload',
     component: Reload
   },
