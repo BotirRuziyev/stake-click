@@ -62,6 +62,27 @@ export default {
   .reload_top {
     margin-right: -22px;
     margin-bottom: 100px;
+    svg {
+      animation: translateY 2.5s infinite alternate;
+    }
+    @keyframes translateY {
+      0%,
+      20%,
+      70%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-57px);
+      }
+      50% {
+        transform: translateY(-52px);
+      }
+      60% {
+        transform: translateY(-53px);
+      }
+    }
   }
   .logo {
     margin-bottom: 26px;

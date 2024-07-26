@@ -7,6 +7,7 @@ import qrcode from '../views/qr-code.vue'
 import slider from '../views/Slider.vue'
 import Wallet from '../views/Wallet.vue'
 import Reload from '../views/Reload.vue'
+import Modals from '../views/Modals.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -48,6 +49,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/reload',
     name: 'reload',
     component: Reload
+  },
+  {
+    path: '/modals',
+    name: 'modals',
+    component: Modals
   },
 ]
 

@@ -2,7 +2,7 @@
   <div class="app">
     <router-view />
     <Menu />
-    <PageLoading />
+    <!-- <PageLoading /> -->
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      document.querySelector(".page_loading").classList.add("no_loading");
+      // document.querySelector(".page_loading").classList.add("no_loading");
     }, 2000);
   },
 };
