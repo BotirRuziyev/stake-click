@@ -1,5 +1,5 @@
 <template>
-  <div class="menu d-grid align-items-end position-fixed">
+  <div class="page_menu d-grid align-items-end position-fixed">
     <div class="menu_item active">
       <div class="menu_item_in">
         <router-link to="#" @click="menubar(1)">
@@ -174,11 +174,10 @@
 export default {
   methods: {
     menubar(id) {
-      let menu = document.querySelector(".menu");
-      let url = `url(/img/Subtract${id}.svg)`;
+      document.querySelector(".page_menu").style.backgroundImage =
+        `url(/img/Subtract${id}.svg)`;
       document.querySelectorAll(".menu_item").forEach((e, i) => {
         if (id == i + 1) {
-          menu.style.backgroundImage = url;
           e.classList.add("active");
         } else {
           e.classList.remove("active");
@@ -188,8 +187,8 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.menu {
+<style lang="scss">
+.page_menu {
   max-width: 334px;
   width: 100%;
   min-height: 89px;

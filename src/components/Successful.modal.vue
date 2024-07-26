@@ -250,7 +250,7 @@ export default {
     60% {
       background: url("@/assets/img/successful3.svg");
       filter: blur(0.7px);
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     100% {
       background: url("@/assets/img/successful4.svg");
